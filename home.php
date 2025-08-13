@@ -338,6 +338,11 @@ $conn->close();
                         
     
                     </div>
+
+                    <p class="text-red-700">
+                         * File maximum size should be 40 MB 
+                    </p>
+
                     
                 <!-- Auto-delete Settings -->
                 <div class="neumorphic p-6 space-y-6">

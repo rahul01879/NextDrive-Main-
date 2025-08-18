@@ -339,10 +339,6 @@ $conn->close();
     
                     </div>
 
-                    <p class="text-red-700">
-                         * File maximum size should be 40 MB 
-                    </p>
-
                     
                 <!-- Auto-delete Settings -->
                 <div class="neumorphic p-6 space-y-6">
@@ -463,27 +459,32 @@ $conn->close();
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
     
-                                            <div class="relative group">
-    <button class="text-gray-400 hover:text-green-400 transition-colors duration-300" title="Share">
-        <i class="fas fa-share-alt"></i>
-    </button>
-    
-    <div class="absolute right-0 bottom-full mb-2 opacity-0 group-hover:opacity-100 
-            scale-95 group-hover:scale-100 pointer-events-none group-hover:pointer-events-auto 
-            transition-all duration-300 delay-100 neumorphic min-w-[160px] p-2 z-10">
-        <a href="https://wa.me/?text=<?= urlencode('Check out this file: ' . 'uploads/' . $file['name']) ?>" 
-           target="_blank" 
-           class="flex items-center px-4 py-3 text-sm text-gray-300 hover:bg-white/5 rounded-xl transition-colors duration-200 space-x-3">
-            <i class="fab fa-whatsapp text-green-400"></i>
-            <span>WhatsApp</span>
-        </a>
-        <button onclick="copyToClipboard('<?= 'http://' . $_SERVER['HTTP_HOST'] . '/uploads/' . $file['name'] ?>')" 
-                class="flex items-center px-4 py-3 text-sm text-gray-300 hover:bg-white/5 rounded-xl transition-colors duration-200 space-x-3">
-            <i class="fas fa-link text-blue-400"></i>
-            <span>Copy Download Link</span>
-        </button>
-    </div>
-</div>
+                                            <!-- <div class="relative group">
+                                                <button class="text-gray-400 hover:text-green-400 transition-colors duration-300" title="Share">
+                                                    <i class="fas fa-share-alt"></i>
+                                                </button>
+                                                            
+                                              <div class="absolute right-0 bottom-full mb-2 opacity-0 group-hover:opacity-100 
+                                                        scale-95 group-hover:scale-100 pointer-events-none group-hover:pointer-events-auto 
+                                                       transition-all duration-300 delay-100 neumorphic min-w-[160px] p-2 z-10">
+                                                                <a href="https://wa.me/?text=<?= urlencode('Check out this file: ' . 'uploads/' . $file['name']) ?>" 
+                                                                target="_blank" 
+                                                                class="flex items-center px-4 py-3 text-sm text-gray-300 hover:bg-white/5 rounded-xl transition-colors duration-200 space-x-3">
+                                                                    <i class="fab fa-whatsapp text-green-400"></i>
+                                                                    <span>WhatsApp</span>
+                                                                </a>
+                                                            <?php 
+                                                        $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
+                                                        $fileUrl = $protocol . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . "/uploads/" . rawurlencode($file['name']);
+                                                        ?>
+                                                        <button onclick="copyToClipboard('<?= $fileUrl ?>')" 
+                                        
+                                                        class="flex items-center px-4 py-3 text-sm text-gray-300 hover:bg-white/5 rounded-xl transition-colors duration-200 space-x-3">
+                                                    <i class="fas fa-link text-blue-400"></i>
+                                                    <span>Copy Download Link</span>
+                                                </button>
+                                            </div>
+                                        </div> -->
 
                                         </div>
                                     </div>
@@ -559,13 +560,29 @@ $conn->close();
         });
     }
 
-    function copyToClipboard(text) {
-        navigator.clipboard.writeText(text).then(function() {
-            alert('Download link copied to clipboard: ' + text);
-        }, function(err) {
-            console.error('Could not copy text: ', err);
-        });
-    }
+//     function copyToClipboard(text) {
+//     navigator.clipboard.writeText(text).then(() => {
+//         // Create tooltip
+//         const tooltip = document.createElement("div");
+//         tooltip.textContent = "Copied!";
+//         tooltip.style.position = "fixed";
+//         tooltip.style.top = "20px";
+//         tooltip.style.right = "20px";
+//         tooltip.style.background = "#4ade80"; // green
+//         tooltip.style.color = "#fff";
+//         tooltip.style.padding = "8px 14px";
+//         tooltip.style.borderRadius = "8px";
+//         tooltip.style.boxShadow = "0 2px 10px rgba(0,0,0,0.2)";
+//         tooltip.style.zIndex = "9999";
+//         document.body.appendChild(tooltip);
+
+//         setTimeout(() => tooltip.remove(), 1500);
+//     }).catch(err => {
+//         console.error('Clipboard copy failed:', err);
+//         alert('Could not copy link');
+//     });
+// }
+
 
     // Initialize and update every minute
     updateTimeIndicators();

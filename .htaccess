@@ -1,0 +1,12 @@
+# Allow access
+Require all granted
+
+# Disable directory listing
+Options -Indexes
+
+# Set home.php as index file
+DirectoryIndex home.php
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+</IfModule>

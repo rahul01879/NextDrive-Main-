@@ -1,5 +1,5 @@
 <?php
-// logout.php - Admin Logout Page
+// logout.php - User/Admin Logout Page
 
 // Start session and destroy it
 session_start();
@@ -11,14 +11,13 @@ $_SESSION = array();
 session_destroy();
 
 // Redirect to login page
-header("Location: admin.php");
+header("Location: login.php");
 exit();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Logging Out...</title>
-    <!-- Optional: Add a loading spinner or progress bar -->
     <style>
         body {
             background-color: #f3f4f6;
@@ -58,7 +57,7 @@ exit();
     <!-- JavaScript fallback redirect in case header fails -->
     <script>
         setTimeout(function() {
-            window.location.href = "admin_login.php";
+            window.location.href = "login.php";
         }, 2000);
     </script>
 </body>

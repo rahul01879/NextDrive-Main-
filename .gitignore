@@ -1,2 +1,4 @@
 uploads/*
-!.gitkeep
+!uploads/.gitkeep
+!uploads/thumbnails/
+!uploads/thumbnails/.gitkeep
